@@ -1,0 +1,27 @@
+{
+  "type": "module",
+  "engines": {
+    "node": ">=22.22.3"
+  },
+  "scripts": {
+    "fetch": "tsx src/fetchTools.ts",
+    "match": "tsx src/match.ts",
+    "resolve": "tsx src/resolve.ts",
+    "build-graph": "tsx src/buildGraph.ts",
+    "viz": "tsx src/buildViz.ts",
+    "eval": "tsx src/eval.ts",
+    "all:subset": "tsx src/orchestrate.ts --subset",
+    "all:full": "tsx src/orchestrate.ts --full"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.87",
+    "@composio/core": "^0.18.1",
+    "p-limit": "^7.3.2",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.10",
+    "@types/bun": "^1.3.11",
+    "tsx": "^4.23.13"
+  }
+}
