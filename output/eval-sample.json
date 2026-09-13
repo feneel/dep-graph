@@ -1,0 +1,590 @@
+{
+  "judged": [
+    {
+      "edge": {
+        "id": "e37",
+        "from": "GOOGLESUPER_LIST_CALENDARS",
+        "to": "GOOGLESUPER_PATCH_CALENDAR",
+        "field": "calendar_id",
+        "outputField": "data.calendars[].id",
+        "confidence": 0.83,
+        "source": "heuristic",
+        "rationale": "The GOOGLESUPER_LIST_CALENDARS tool can provide the calendar ID."
+      },
+      "verdict": "correct",
+      "reason": "Tool A's output field provides the unique identifier needed for Tool B's input field."
+    },
+    {
+      "edge": {
+        "id": "e46",
+        "from": "GOOGLESUPER_LIST_SEND_AS",
+        "to": "GOOGLESUPER_SETTINGS_SEND_AS_GET",
+        "field": "send_as_email",
+        "outputField": "data.sendAs[].sendAsEmail",
+        "confidence": 0.9,
+        "source": "heuristic",
+        "rationale": "The 'GOOGLESUPER_LIST_SEND_AS' tool directly provides a list of send-as email addresses, which is exactly what this field requires."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the exact email address needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e21",
+        "from": "GOOGLESUPER_EVENTS_GET",
+        "to": "GOOGLESUPER_EVENTS_IMPORT",
+        "field": "end",
+        "outputField": "data.end",
+        "confidence": 1,
+        "source": "heuristic",
+        "rationale": "The 'end' field can be directly obtained from the output of the 'GOOGLESUPER_EVENTS_GET' tool."
+      },
+      "verdict": "correct",
+      "reason": "A's output field 'data.end' provides the end time needed for B's input field 'end'."
+    },
+    {
+      "edge": {
+        "id": "e35",
+        "from": "GOOGLESUPER_FETCH_EMAILS",
+        "to": "GOOGLESUPER_MODIFY_THREAD_LABELS",
+        "field": "thread_id",
+        "outputField": "data.messages[].threadId",
+        "confidence": 0.9,
+        "source": "heuristic",
+        "rationale": "The 'threadId' output from fetching emails directly corresponds to the required 'thread_id' input."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the thread ID needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e2",
+        "from": "GOOGLESUPER_FETCH_EMAILS",
+        "to": "GOOGLESUPER_BATCH_DELETE_MESSAGES",
+        "field": "messageIds",
+        "outputField": "data.messages[].messageId",
+        "confidence": 0.83,
+        "source": "heuristic",
+        "rationale": "The 'messageIds' field can be directly obtained from the 'GOOGLESUPER_FETCH_EMAILS' tool's output."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the message IDs needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e6",
+        "from": "GOOGLESUPER_LIST_CALENDARS",
+        "to": "GOOGLESUPER_CALENDAR_LIST_DELETE",
+        "field": "calendar_id",
+        "outputField": "data.calendars[].id",
+        "confidence": 0.83,
+        "source": "heuristic",
+        "rationale": "The `GOOGLESUPER_LIST_CALENDARS` tool's output field `data.calendars[].id` directly provides the calendar ID needed for deletion."
+      },
+      "verdict": "correct",
+      "reason": "Tool A's output field provides the calendar ID needed for Tool B's input field."
+    },
+    {
+      "edge": {
+        "id": "e43",
+        "from": "GOOGLESUPER_FETCH_EMAILS",
+        "to": "GOOGLESUPER_REPLY_TO_THREAD",
+        "field": "thread_id",
+        "outputField": "data.messages[].threadId",
+        "confidence": 0.9,
+        "source": "heuristic",
+        "rationale": "The thread_id can be obtained from fetching emails, which is a common precursor to replying to a thread."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the required thread ID for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e30",
+        "from": "GOOGLESUPER_FETCH_EMAILS",
+        "to": "GOOGLESUPER_FETCH_MESSAGE_BY_THREAD_ID",
+        "field": "thread_id",
+        "outputField": "data.messages[].threadId",
+        "confidence": 0.9,
+        "source": "heuristic",
+        "rationale": "The `thread_id` can be directly obtained from the `GOOGLESUPER_FETCH_EMAILS` tool's output."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the required thread ID for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e5",
+        "from": "GOOGLESUPER_LIST_LABELS",
+        "to": "GOOGLESUPER_BATCH_MODIFY_MESSAGES",
+        "field": "removeLabelIds",
+        "outputField": "data.labels[].id",
+        "confidence": 0.9,
+        "source": "llm-proposed",
+        "rationale": "Label IDs are needed, and the LIST_LABELS tool provides them."
+      },
+      "verdict": "correct",
+      "reason": "Tool A's output provides the required label IDs for Tool B's input."
+    },
+    {
+      "edge": {
+        "id": "e8",
+        "from": "GOOGLESUPER_CREATE_CALENDAR",
+        "to": "GOOGLESUPER_CALENDAR_LIST_INSERT",
+        "field": "id",
+        "outputField": "data.id",
+        "confidence": 0.75,
+        "source": "llm-proposed",
+        "rationale": "The 'id' field for inserting a calendar into the list would typically come from a newly created calendar. (path auto-corrected from \"id\" to \"data.id\")"
+      },
+      "verdict": "incorrect",
+      "reason": "The output field Y provides a calendar ID, while input field X requires a calendar ID in email format."
+    },
+    {
+      "edge": {
+        "id": "e40",
+        "from": "GOOGLESUPER_LIST_LABELS",
+        "to": "GOOGLESUPER_PATCH_LABEL",
+        "field": "id",
+        "outputField": "data.labels[].id",
+        "confidence": 0.9,
+        "source": "llm-proposed",
+        "rationale": "The label ID is a unique identifier that can be obtained by listing existing labels."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the label ID needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e27",
+        "from": "GOOGLESUPER_LIST_CALENDARS",
+        "to": "GOOGLESUPER_EVENTS_MOVE",
+        "field": "destination",
+        "outputField": "data.calendars[].id",
+        "confidence": 1,
+        "source": "llm-proposed",
+        "rationale": "The destination calendar ID can be obtained from the same tool that lists calendar IDs."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the calendar IDs needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e18",
+        "from": "GOOGLESUPER_GET_REPLY",
+        "to": "GOOGLESUPER_DELETE_REPLY",
+        "field": "reply_id",
+        "outputField": "data.id",
+        "confidence": 0.75,
+        "source": "llm-proposed",
+        "rationale": "The reply_id would be obtained from a previous action that retrieved the reply. (path auto-corrected from \"id\" to \"data.id\")"
+      },
+      "verdict": "correct",
+      "reason": "A's output field data.id directly provides the reply ID needed for B's input field reply_id."
+    },
+    {
+      "edge": {
+        "id": "e19",
+        "from": "GOOGLESUPER_LIST_MESSAGES",
+        "to": "GOOGLESUPER_DELETE_THREAD",
+        "field": "id",
+        "outputField": "data.messages[].id",
+        "confidence": 0.75,
+        "source": "llm-proposed",
+        "rationale": "The thread ID can be obtained by listing messages or threads, which would provide the necessary ID for deletion. (path auto-corrected from \"threads.id\" to \"data.messages[].id\")"
+      },
+      "verdict": "incorrect",
+      "reason": "The output field Y provides message IDs, while input field X requires a thread ID."
+    },
+    {
+      "edge": {
+        "id": "e33",
+        "from": "GOOGLESUPER_CREATE_LABEL",
+        "to": "GOOGLESUPER_GET_LABEL",
+        "field": "id",
+        "outputField": "data.id",
+        "confidence": 0.75,
+        "source": "llm-proposed",
+        "rationale": "The 'id' field for getting label details can be obtained from the output of the 'create label' tool, which generates a new label ID. (path auto-corrected from \"id\" to \"data.id\")"
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the labelId needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e34",
+        "from": "GOOGLESUPER_CREATE_REPLY",
+        "to": "GOOGLESUPER_GET_REPLY",
+        "field": "replyId",
+        "outputField": "data.id",
+        "confidence": 0.9,
+        "source": "llm-proposed",
+        "rationale": "The replyId would be generated when a reply is created."
+      },
+      "verdict": "correct",
+      "reason": "A's output field data.id directly provides the reply ID needed for B's input field replyId."
+    },
+    {
+      "edge": {
+        "id": "e11",
+        "from": "GOOGLESUPER_LIST_CALENDARS",
+        "to": "GOOGLESUPER_CALENDARS_DELETE",
+        "field": "calendar_id",
+        "outputField": "data.calendars[].id",
+        "confidence": 0.95,
+        "source": "llm",
+        "rationale": "The tool description explicitly states to use calendarList.list to find deletable calendar IDs, and the output field from LIST_CALENDARS directly provides calendar IDs."
+      },
+      "verdict": "correct",
+      "reason": "Tool A's output field provides the calendar ID needed for Tool B's input field."
+    },
+    {
+      "edge": {
+        "id": "e51",
+        "from": "GOOGLESUPER_GET_LABEL",
+        "to": "GOOGLESUPER_UPDATE_LABEL",
+        "field": "color",
+        "outputField": "data.color",
+        "confidence": 1,
+        "source": "llm",
+        "rationale": "The color of an existing label can be retrieved using the Get Label tool."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the color needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e80",
+        "from": "GITHUB_CHECK_IF_USER_IS_REPOSITORY_COLLABORATOR",
+        "to": "GITHUB_CREATE_A_DEPLOYMENT_BRANCH_POLICY",
+        "field": "owner",
+        "outputField": "data.owner",
+        "confidence": 1,
+        "source": "heuristic",
+        "rationale": "The 'owner' field can be directly obtained from the output of GITHUB_CHECK_IF_USER_IS_REPOSITORY_COLLABORATOR."
+      },
+      "verdict": "correct",
+      "reason": "data.owner from the first tool directly provides the required owner for the second tool."
+    },
+    {
+      "edge": {
+        "id": "e55",
+        "from": "GITHUB_GET_AN_ISSUE_EVENT",
+        "to": "GITHUB_ADD_SUB_ISSUE",
+        "field": "issue_id",
+        "outputField": "data.data.issue.id",
+        "confidence": 0.83,
+        "source": "heuristic",
+        "rationale": "The heuristic candidate directly provides the issue ID which is a global node ID."
+      },
+      "verdict": "incorrect",
+      "reason": "The output field Y provides an issue ID, while input field X requires a global node ID format."
+    },
+    {
+      "edge": {
+        "id": "e92",
+        "from": "GITHUB_CHECK_IF_USER_IS_REPOSITORY_COLLABORATOR",
+        "to": "GITHUB_CREATE_A_REVIEW_FOR_A_PULL_REQUEST",
+        "field": "owner",
+        "outputField": "data.owner",
+        "confidence": 1,
+        "source": "heuristic",
+        "rationale": "The 'owner' field can be directly obtained from the output of 'GITHUB_CHECK_IF_USER_IS_REPOSITORY_COLLABORATOR'."
+      },
+      "verdict": "correct",
+      "reason": "data.owner from the first tool directly provides the required owner username for the second tool."
+    },
+    {
+      "edge": {
+        "id": "e150",
+        "from": "GITHUB_FIND_PULL_REQUESTS",
+        "to": "GITHUB_LIST_COMMENTS_FOR_A_PULL_REQUEST_REVIEW",
+        "field": "repo",
+        "outputField": "data.pull_requests[].base.repo",
+        "confidence": 1,
+        "source": "heuristic",
+        "rationale": "The 'repo' field can be directly obtained from the 'base.repo' of a pull request found by GITHUB_FIND_PULL_REQUESTS."
+      },
+      "verdict": "correct",
+      "reason": "A's output field provides the repository name needed for B's input field."
+    },
+    {
+      "edge": {
+        "id": "e207",
+        "from": "GITHUB_CHECK_IF_USER_IS_REPOSITORY_COLLABORATOR",
+        "to": "GITHUB_UPDATE_A_DEPLOYMENT_BRANCH_POLICY",
+        "field": "repo",
+        "outputField": "data.repo",
+        "confidence": 1,
+        "source": "heuristic",
+        "rationale": "The 'repo' field can be directly obtained from the output of various GitHub tools that deal with repositories."
+      },
+      "verdict": "incorrect",
+      "reason": "data.repo does not provide the required repository name format for the input field."
+    },
+    {
+      "edge": {
+        "id": "e145",
+        "from": "GITHUB_LIST_DEPLOYMENT_BRANCH_POLICIES",
+        "to": "GITHUB_GET_DEPLOYMENT_BRANCH_POLICY",
+        "field": "branch_policy_id",
+        "outputField": "data.branch_policies[].id",
+        "confidence": 0.8,
+        "source": "heuristic",
+        "rationale": "The 'branch_policy_id' can be obtained by listing all deployment branch policies and selecting the appropriate ID."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the unique ID needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e142",
+        "from": "GITHUB_LIST_COMMIT_COMMENTS",
+        "to": "GITHUB_GET_COMMIT_COMMENT",
+        "field": "comment_id",
+        "outputField": "data.comments[].id",
+        "confidence": 1,
+        "source": "heuristic",
+        "rationale": "The 'list commit comments' tool directly provides the comment ID needed for this tool."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the unique identifier needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e177",
+        "from": "GITHUB_GET_COMMIT_AUTHORS",
+        "to": "GITHUB_MAP_A_COMMIT_AUTHOR",
+        "field": "owner",
+        "outputField": "data.owner",
+        "confidence": 1,
+        "source": "heuristic",
+        "rationale": "The 'owner' field can be directly obtained from the output of GITHUB_GET_COMMIT_AUTHORS."
+      },
+      "verdict": "correct",
+      "reason": "data.owner provides the required username for the owner field."
+    },
+    {
+      "edge": {
+        "id": "e57",
+        "from": "GITHUB_GET_AN_ISSUE",
+        "to": "GITHUB_ADD_SUB_ISSUE",
+        "field": "sub_issue_url",
+        "outputField": "data.html_url",
+        "confidence": 0.9,
+        "source": "llm-proposed",
+        "rationale": "The 'Get an Issue' tool can provide the HTML URL of an issue, which serves as the sub-issue URL."
+      },
+      "verdict": "correct",
+      "reason": "The output field data.html_url from the Get an issue tool provides the URL needed for the sub_issue_url input field in the Add sub-issue to an issue tool."
+    },
+    {
+      "edge": {
+        "id": "e115",
+        "from": "GITHUB_GET_GIST_COMMENT",
+        "to": "GITHUB_DELETE_GIST_COMMENT",
+        "field": "comment_id",
+        "outputField": "data.data.id",
+        "confidence": 0.75,
+        "source": "llm-proposed",
+        "rationale": "The comment_id for a gist comment should come from a tool that lists or gets gist comments, not other types of comments. (path auto-corrected from \"data.id\" to \"data.data.id\")"
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the comment_id needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e193",
+        "from": "GITHUB_LIST_PULL_REQUESTS",
+        "to": "GITHUB_REMOVE_REQUESTED_REVIEWERS_FROM_A_PULL_REQUEST",
+        "field": "pull_number",
+        "outputField": "data.pull_requests[].number",
+        "confidence": 0.9,
+        "source": "llm-proposed",
+        "rationale": "The pull request number can be obtained by listing pull requests, which is a common precursor for actions on a specific pull request."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the pull request number needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e190",
+        "from": "GITHUB_LIST_LABELS_FOR_A_SELF_HOSTED_RUNNER_FOR_A_REPOSITORY",
+        "to": "GITHUB_REMOVE_CUSTOM_LABELS_FROM_SELF_HOSTED_REPO_RUNNER",
+        "field": "runner_id",
+        "outputField": "data.labels[].id",
+        "confidence": 0.75,
+        "source": "llm-proposed",
+        "rationale": "The runner_id can be obtained by listing runners associated with a repository. (path auto-corrected from \"data.runner.id\" to \"data.labels[].id\")"
+      },
+      "verdict": "incorrect",
+      "reason": "Field Y provides label IDs, while field X requires a runner ID."
+    },
+    {
+      "edge": {
+        "id": "e132",
+        "from": "GITHUB_LIST_PULL_REQUESTS",
+        "to": "GITHUB_DISMISS_A_REVIEW_FOR_A_PULL_REQUEST",
+        "field": "pull_number",
+        "outputField": "data.pull_requests[].number",
+        "confidence": 1,
+        "source": "llm-proposed",
+        "rationale": "The 'pull_number' can be obtained from the 'number' field of a pull request listed by GITHUB_LIST_PULL_REQUESTS."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the unique pull request number needed for B's field X."
+    },
+    {
+      "edge": {
+        "id": "e217",
+        "from": "GITHUB_FIND_PULL_REQUESTS",
+        "to": "GITHUB_UPDATE_A_PULL_REQUEST",
+        "field": "pull_number",
+        "outputField": "data.pull_requests[].number",
+        "confidence": 0.9,
+        "source": "llm-proposed",
+        "rationale": "The pull request number can be obtained from listing pull requests."
+      },
+      "verdict": "correct",
+      "reason": "The output field Y provides the unique pull request number needed for input field X."
+    },
+    {
+      "edge": {
+        "id": "e74",
+        "from": "GITHUB_FIND_PULL_REQUESTS",
+        "to": "GITHUB_CREATE_A_CODESPACE_FROM_A_PULL_REQUEST",
+        "field": "pull_number",
+        "outputField": "data.pull_requests[].number",
+        "confidence": 1,
+        "source": "llm-proposed",
+        "rationale": "The 'pull_number' field can be obtained from the 'number' output of the 'GITHUB_FIND_PULL_REQUESTS' tool."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the unique number needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e211",
+        "from": "GITHUB_LIST_GIST_COMMENTS",
+        "to": "GITHUB_UPDATE_A_GIST_COMMENT",
+        "field": "comment_id",
+        "outputField": "data.data[].id",
+        "confidence": 0.75,
+        "source": "llm-proposed",
+        "rationale": "The comment_id can be obtained by listing comments for a specific gist. (path auto-corrected from \"data.comments[].id\" to \"data.data[].id\")"
+      },
+      "verdict": "correct",
+      "reason": "The output field Y provides the unique identifier needed for input field X."
+    },
+    {
+      "edge": {
+        "id": "e204",
+        "from": "GITHUB_LIST_REVIEWS_FOR_A_PULL_REQUEST",
+        "to": "GITHUB_SUBMIT_A_REVIEW_FOR_A_PULL_REQUEST",
+        "field": "review_id",
+        "outputField": "data.reviews[].id",
+        "confidence": 0.83,
+        "source": "llm",
+        "rationale": "The 'review_id' is most directly obtained from listing reviews for a pull request, as the other candidates are for dismissed reviews or issue events."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the review ID needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e125",
+        "from": "GITHUB_LIST_REVIEW_COMMENTS_ON_A_PULL_REQUEST",
+        "to": "GITHUB_DELETE_PULL_REQUEST_COMMENT_REACTION",
+        "field": "comment_id",
+        "outputField": "data.comments[].id",
+        "confidence": 0.9,
+        "source": "llm",
+        "rationale": "To delete a pull request comment reaction, the comment ID must first be obtained, and 'List review comments on a pull request' is the most direct way to get it."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the unique ID needed for B's input field X."
+    },
+    {
+      "edge": {
+        "id": "e166",
+        "from": "GITHUB_LIST_REVIEW_COMMENTS_ON_A_PULL_REQUEST",
+        "to": "GITHUB_LIST_REACTIONS_FOR_A_PULL_REQUEST_REVIEW_COMMENT",
+        "field": "comment_id",
+        "outputField": "data.comments[].id",
+        "confidence": 0.83,
+        "source": "llm",
+        "rationale": "The 'comment_id' can be obtained from listing review comments on a pull request."
+      },
+      "verdict": "correct",
+      "reason": "A's output field Y provides the unique identifier needed for B's input field X."
+    }
+  ],
+  "golden": [
+    {
+      "item": {
+        "consumer": "GOOGLESUPER_REPLY_TO_THREAD",
+        "field": "thread_id",
+        "producerKeyword": "THREAD|MESSAGE|EMAIL",
+        "note": "readme's canonical example"
+      },
+      "found": true,
+      "matchedEdge": {
+        "id": "e43",
+        "from": "GOOGLESUPER_FETCH_EMAILS",
+        "to": "GOOGLESUPER_REPLY_TO_THREAD",
+        "field": "thread_id",
+        "outputField": "data.messages[].threadId",
+        "confidence": 0.9,
+        "source": "heuristic",
+        "rationale": "The thread_id can be obtained from fetching emails, which is a common precursor to replying to a thread."
+      }
+    },
+    {
+      "item": {
+        "consumer": "GOOGLESUPER_SEND_EMAIL",
+        "field": "recipient_email",
+        "producerKeyword": "CONTACT|PEOPLE",
+        "note": "readme's name -> contacts -> email chain"
+      },
+      "found": true,
+      "matchedEdge": {
+        "id": "e45",
+        "from": "GOOGLESUPER_GET_CONTACTS",
+        "to": "GOOGLESUPER_SEND_EMAIL",
+        "field": "recipient_email",
+        "outputField": "data.connections[].emailAddresses",
+        "confidence": 0.83,
+        "source": "heuristic",
+        "rationale": "The 'GET_CONTACTS' tool can provide email addresses for recipients."
+      }
+    },
+    {
+      "item": {
+        "consumer": "GITHUB_ADD_ASSIGNEES_TO_AN_ISSUE",
+        "field": "issue_number",
+        "producerKeyword": "ISSUE",
+        "note": "GitHub analogue: issue number from listing/creating issues"
+      },
+      "found": false
+    },
+    {
+      "item": {
+        "consumer": "GITHUB_MERGE_A_PULL_REQUEST",
+        "field": "pull_number",
+        "producerKeyword": "PULL",
+        "note": "GitHub analogue: PR number from listing PRs"
+      },
+      "found": true,
+      "matchedEdge": {
+        "id": "e182",
+        "from": "GITHUB_FIND_PULL_REQUESTS",
+        "to": "GITHUB_MERGE_A_PULL_REQUEST",
+        "field": "pull_number",
+        "outputField": "data.pull_requests[].number",
+        "confidence": 1,
+        "source": "llm-proposed",
+        "rationale": "The 'pull_number' can be obtained from the 'number' field of a pull request found by 'GITHUB_FIND_PULL_REQUESTS'."
+      }
+    }
+  ]
+}
